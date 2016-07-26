@@ -20,7 +20,9 @@ module Embulk
         def initialize
           @version_path = ""
           @client = HTTPClient.new
+          # @client.debug_dev = STDERR
           @client.default_header = {Accept: 'application/json; charset=UTF-8'}
+          @client.ssl_config.ssl_version = "TLSv1.2"
         end
 
         def get(path, parameters={})
